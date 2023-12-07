@@ -110,17 +110,6 @@ const Checkout = () => {
         }
     }
 
-    const testPut = async(e) => {
-        e.preventDefault();
-        try {
-            console.log(harga);
-            await axios.put(`${process.env.REACT_APP_API}checkout`, { harga, id })
-            console.log('put berhasil');
-        } catch (error) {
-            console.log(error, 'put failed');
-        }
-    }
-
   return (
     <div className='h-full grid lg:h-screen xl:h-full bg-fixed' style={{ backgroundImage: `url(${background})` }}>
         <Navbar open={handleSide} close={handleSide} menu={side} />
@@ -175,7 +164,6 @@ const Checkout = () => {
                 </div>
             </div>
             <button onClick={handleCheckout} className='text-black bg-white rounded-full py-2 lg:h-max w-3/4 xl:w-1/4 mx-auto font-bold mt-8 lg:mt-16 xl:mt-10 xl:mb-5 transition-all duration-700 hover:scale-110'>Pesan Sekarang</button>
-            <button className='my-20 bg-white text-black w-max' onClick={testPut}>Test</button>
         </div>
         <Footer />
         {
