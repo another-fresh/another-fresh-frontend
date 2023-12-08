@@ -24,7 +24,6 @@ const Checkout = () => {
         alamat: '',
         buah: idParams === '1' ? 'Anggur Red Globe' : idParams === '2' ? 'Anggur Hijau' : 'Anggur Hitam',
         qty: '',
-        hargaTotal: harga || 0,
         id_pembelian: id
     })
     
@@ -32,23 +31,23 @@ const Checkout = () => {
 
     useEffect(()=>{
         if (data.buah === '1' && data.qty === '0.25') {
-        setHarga(16000)
+        setHarga(13500)
         } else if (data.buah === '1' && data.qty === '0.50'){
-        setHarga(26000)
+        setHarga(24500)
         } else if (data.buah === '2' && data.qty === '0.25'){
         setHarga(19000)
         } else if (data.buah === '2' && data.qty === '0.50'){
-        setHarga(39000)
+        setHarga(36000)
         } else if (data.buah === '3' && data.qty === '0.25'){
         setHarga(14000)
         } else if (data.buah === '3' && data.qty === '0.50'){
-        setHarga(23000)
+        setHarga(26000)
         } else if (data.buah === '1'){
-        setHarga(39000 * data.qty)
+        setHarga(42.000 * data.qty)
         } else if (data.buah === '2'){
-        setHarga(77000 * data.qty)
+        setHarga(72000 * data.qty)
         } else {
-        setHarga(40000 * data.qty)
+        setHarga(43000 * data.qty)
         }
     }, [data.qty, data.buah])
 
@@ -88,8 +87,6 @@ const Checkout = () => {
                     console.log('post success');
                     console.log(harga);
                     await axios.post(`${process.env.REACT_APP_API}checkout`, data)
-                    // await axios.put(`${process.env.REACT_APP_API}checkout`, { harga, id })
-                    // console.log('put success');
                     setIsLoading(false)
                     navigate('/')
                     Swal.fire({
@@ -155,7 +152,7 @@ const Checkout = () => {
                             <p className='mb-1 ml-2 text-lg font-semibold'>Kg</p>
                         </div>
                     </div>
-                    <div className="grid xl:mx-auto w-3/4 ml-10">
+                    <div className="grid xl:mx-auto w-1/2 ml-10">
                         <p className='mb-1 text-start'>Harga</p>
                         <div className='px-2 py-1 rounded border bg-white'>
                             <p className='text-start text-black font-semibold'>Rp. { harga }</p>
